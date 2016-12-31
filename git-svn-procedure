@@ -1,0 +1,19 @@
+1) setup svn server
+
+2) create some project and some commits
+
+3) install git , git-svn, java
+
+4) download svn-migrate-scipts.jar file
+https://bitbucket.org/atlassian/svn-migration-scripts/downloads/svn-migration-scripts.jar
+
+5) java -jar ~/svn-migration-scripts.jar verify
+
+5) mkdir GitMigration
+cd GitMigration
+java -jar /root/svn-migration-scripts.jar authors file:///var/www/svn/demo > authors.txt
+sed -i -e 's/mycompany/versionit/' authors.txt
+git svn clone --stdlayout --authors-file=authors.txt file:///var/www/svn/demo demogit
+
+cd demogit
+git log
